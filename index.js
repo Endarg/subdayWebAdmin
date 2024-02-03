@@ -212,7 +212,7 @@ const sendPassword = async () =>
         password: passwordpageInput.value
     }
     
-    const responce = await axios.post('https://subday.fun:5000/login/', postData);
+    const responce = await axios.post('https://subday.fun/login/', postData);
 
     console.log(responce);
 
@@ -245,7 +245,7 @@ const turnOn = async () =>
         channel: adminChannelInput.value
     }
     
-    const responce = await axios.post('https://subday.fun:5000/manage/', postData);
+    const responce = await axios.post('https://subday.fun/manage/', postData);
 
     if (responce.data.correct)
     {
@@ -268,7 +268,7 @@ const turnOff = async () =>
         commandLine: 'turnOff'
     }
     
-    const responce = await axios.post('https://subday.fun:5000/manage/', postData);
+    const responce = await axios.post('https://subday.fun/manage/', postData);
 
     console.log(responce);
 
@@ -293,6 +293,6 @@ const dropCollection = async () =>
         commandLine: 'dropCollection'
     }
     
-    const responce = await axios.post('https://subday.fun:5000/manage/', postData);
+    const responce = await axios.post('https://subday.fun/manage/', postData);
 
 }
