@@ -188,11 +188,15 @@ function updateAdminInput()
     {
         adminChannelInput.disabled = true;
         adminChannelInput.value = channel;
+        adminSubstringInput.disabled = true;
+        adminSubstringInput.value = channel;
     }
     else
     {
         adminChannelInput.disabled = false;
         adminChannelInput.value = channel;
+        adminSubstringInput.disabled = false;
+        adminSubstringInput.value = channel;
     }
 }
 
