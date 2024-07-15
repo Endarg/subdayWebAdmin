@@ -2,7 +2,8 @@ import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.5/+esm'
 
 let password;
 let isOn = false;
-let channel = "honeymad";
+let channel = "justns";
+let substring = "!комп";
 
 document.body.onload = init;
 
@@ -14,6 +15,7 @@ let mainpageFormHeader;
 let adminForm;
 let adminStatus;
 let adminChannelInput;
+let adminSubstringInput;
 let adminButton;
 let adminDropCollectionButton;
 
@@ -63,7 +65,16 @@ function buildMainpage()
     adminChannelInput = document.createElement("input");
     adminChannelInput.className = "mainpage-input";
     adminChannelInput.value = channel;
-    adminChannelInput.placeholder = "honeymad";
+    adminChannelInput.placeholder = "justns";
+
+    const adminSubstringInputLabel = document.createElement("div");
+    adminSubstringInputLabel.textContent = "Строчка, которую будет искать";
+    adminSubstringInputLabel.className = "mainpage-label-block";
+
+    adminSubstringInput = document.createElement("input");
+    adminSubstringInput.className = "mainpage-input";
+    adminSubstringInput.value = substring;
+    adminSubstringInput.placeholder = "!комп";
    
     adminButton = document.createElement("button");
     adminButton.className = "mainpage-button";
@@ -81,6 +92,8 @@ function buildMainpage()
     adminForm.appendChild(adminStatus);
     adminForm.appendChild(adminChannelInputLabel);
     adminForm.appendChild(adminChannelInput);
+    adminForm.appendChild(adminSubstringInputLabel);
+    adminForm.appendChild(adminSubstringInput);
     adminForm.appendChild(adminButton);
     adminForm.appendChild(adminDropCollectionButton);
 }
@@ -242,7 +255,8 @@ const turnOn = async () =>
     const postData = {
         password: password,
         commandLine: 'turnOn',
-        channel: adminChannelInput.value
+        channel: adminChannelInput.value,
+        substing: adminSubstringInput.value
     }
     
     const responce = await axios.post('https://subday.fun/manage', postData);
