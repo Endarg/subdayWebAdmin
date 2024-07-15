@@ -256,7 +256,7 @@ const turnOn = async () =>
         password: password,
         commandLine: 'turnOn',
         channel: adminChannelInput.value,
-        substing: adminSubstringInput.value
+        substring: adminSubstringInput.value
     }
     
     const responce = await axios.post('https://subday.fun/manage', postData);
