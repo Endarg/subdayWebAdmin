@@ -18,6 +18,7 @@ let adminChannelInput;
 let adminSubstringInput;
 let adminButton;
 let adminDropCollectionButton;
+let adminDownloadParticipantsButton;
 
 let passwordpageForm;
 let passwordpageInput;
@@ -88,6 +89,12 @@ function buildMainpage()
 
     updateAdminDropCollectionButton();
 
+    adminDownloadParticipantsButton = document.createElement("button");
+    adminDownloadParticipantsButton.className = "mainpage-button";
+    adminDownloadParticipantsButton.onclick = downloadParticipants;
+    adminDownloadParticipantsButton.textContent = "Скачать таблицу участников";
+    
+
     adminForm.appendChild(adminStatusLabel);
     adminForm.appendChild(adminStatus);
     adminForm.appendChild(adminChannelInputLabel);
@@ -96,6 +103,7 @@ function buildMainpage()
     adminForm.appendChild(adminSubstringInput);
     adminForm.appendChild(adminButton);
     adminForm.appendChild(adminDropCollectionButton);
+    adminForm.appendChild(adminDownloadParticipantsButton);
 }
 
 function mountMainpage()
@@ -313,4 +321,12 @@ const dropCollection = async () =>
     
     const responce = await axios.post('https://subday.fun/manage', postData);
 
+}
+
+const downloadParticipants = async () =>
+{
+    await axios.get('https://subday.fun/get-participants').then (res => {
+            console.log('Got participants CSV');
+            console.log(res.data.participantsCSV);
+        });
 }
