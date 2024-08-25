@@ -333,7 +333,7 @@ const downloadParticipants = async () =>
         const csvLink = document.createElement('a');
         const csvUrl = URL.createObjectURL(csvFile);
 
-        csvLink.href = url;
+        csvLink.href = csvUrl;
         csvLink.download = csvFile.name;
         document.body.appendChild(csvLink);
         csvLink.click();
