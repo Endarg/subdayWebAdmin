@@ -328,10 +328,14 @@ const downloadParticipants = async () =>
     await axios.get('https://subday.fun/get-participants').then (res => {
 
         const participantsRaw = res.data.participantsCSV;
-        console.log(participantsRaw);
-        let participantsProcessed;
+        let participantsProcessed = "";
+        for (let i =0; i < participantsRaw.length; ++i)
+        {
+            participantsProcessed += participantsRaw[i].chatter + "\n";
+        }
+        
 
-        /*const csvFile = new File([res.data.participantsCSV], 'participants.csv', {    
+        const csvFile = new File([participantsProcessed], 'participants.csv', {    
         type: 'text/plain',
         });
         const csvLink = document.createElement('a');
@@ -346,6 +350,5 @@ const downloadParticipants = async () =>
         window.URL.revokeObjectURL(csvUrl);
         
         console.log('Got participants CSV');
-        console.log(res.data.participantsCSV);*/
         });
 }
