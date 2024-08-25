@@ -326,7 +326,22 @@ const dropCollection = async () =>
 const downloadParticipants = async () =>
 {
     await axios.get('https://subday.fun/get-participants').then (res => {
-            console.log('Got participants CSV');
-            console.log(res.data.participantsCSV);
+
+        const csvFile = new File([res.data.participantsCSV], 'participants.csv', {    
+        type: 'text/plain',
+        });
+        const csvLink = document.createElement('a');
+        const csvUrl = URL.createObjectURL(csvFile);
+
+        csvLink.href = url;
+        csvLink.download = csvFile.name;
+        document.body.appendChild(csvLink);
+        csvLink.click();
+
+        document.body.removeChild(csvLink);
+        window.URL.revokeObjectURL(csvUrl);
+        
+        console.log('Got participants CSV');
+        console.log(res.data.participantsCSV);
         });
 }
