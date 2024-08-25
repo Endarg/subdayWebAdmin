@@ -197,14 +197,14 @@ function updateAdminInput()
         adminChannelInput.disabled = true;
         adminChannelInput.value = channel;
         adminSubstringInput.disabled = true;
-        adminSubstringInput.value = channel;
+        adminSubstringInput.value = substring;
     }
     else
     {
         adminChannelInput.disabled = false;
         adminChannelInput.value = channel;
         adminSubstringInput.disabled = false;
-        adminSubstringInput.value = channel;
+        adminSubstringInput.value = substring;
     }
 }
 
@@ -250,6 +250,7 @@ const sendPassword = async () =>
         isOn = responce.data.isOn;
         channel = responce.data.channel;
         password = passwordpageInput.value;
+        substring = responce.data.substring;
 
         updateBotStatus();
         updateAdminButton();
@@ -277,6 +278,7 @@ const turnOn = async () =>
     {
         isOn = responce.data.isOn;
         channel = responce.data.channel;
+        substring = responce.data.substring;
 
         updateBotStatus();
         updateAdminButton();
@@ -302,6 +304,7 @@ const turnOff = async () =>
     {
         isOn = responce.data.isOn;
         channel = responce.data.channel;
+        substring = responce.data.substring;
 
         updateBotStatus();
         updateAdminButton();
