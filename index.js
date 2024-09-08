@@ -2,7 +2,7 @@ import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.5/+esm'
 
 let password;
 let isOn = false;
-let channel = "justns";
+let channel = "just_ns";
 let substring = "!комп";
 
 document.body.onload = init;
